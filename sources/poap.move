@@ -12,31 +12,10 @@ public struct POAP has key{
 
 }
 
-public struct OrganizerCap has key, store{
-        id: UID
-
-}
-
-
-//Register as organiser function
-#[allow(lint(self_transfer))]
-public fun register_as_organiser(ctx: &mut TxContext){
-
-        let organizer_cap = OrganizerCap{
-        id: object::new(ctx)
-
-    };
-
-    transfer::public_transfer(organizer_cap, ctx.sender())
-
-}
-
-
-//Mint and transfer POAP(organiserv only function)
 
 
 public fun batch_mint_and_transfer(
-    _organizer_cap: &OrganizerCap,
+    //_organizer_cap: &OrganizerCap,
     event_name: String,
     event_date: u64,
     description: String,
